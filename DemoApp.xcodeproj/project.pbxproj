@@ -21,14 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B397AE8F171DF43700F09A3C /* AXMediaUploadController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AXMediaUploadController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B397AE8F171DF43700F09A3C /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B397AE92171DF43700F09A3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B397AE94171DF43700F09A3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B397AE96171DF43700F09A3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B397AE9A171DF43700F09A3C /* AXMediaUploadController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AXMediaUploadController-Info.plist"; sourceTree = "<group>"; };
+		B397AE9A171DF43700F09A3C /* DemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoApp-Info.plist"; sourceTree = "<group>"; };
 		B397AE9C171DF43700F09A3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B397AE9E171DF43700F09A3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B397AEA0171DF43700F09A3C /* AXMediaUploadController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AXMediaUploadController-Prefix.pch"; sourceTree = "<group>"; };
+		B397AEA0171DF43700F09A3C /* DemoApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoApp-Prefix.pch"; sourceTree = "<group>"; };
 		B397AEA1171DF43700F09A3C /* AXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXAppDelegate.h; sourceTree = "<group>"; };
 		B397AEA2171DF43700F09A3C /* AXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXAppDelegate.m; sourceTree = "<group>"; };
 		B397AEA4171DF43700F09A3C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		B397AE90171DF43700F09A3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B397AE8F171DF43700F09A3C /* AXMediaUploadController.app */,
+				B397AE8F171DF43700F09A3C /* DemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,16 +92,16 @@
 				B397AE99171DF43700F09A3C /* Supporting Files */,
 			);
 			name = "Demo App";
-			path = AXMediaUploadController;
+			path = DemoApp;
 			sourceTree = "<group>";
 		};
 		B397AE99171DF43700F09A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B397AE9A171DF43700F09A3C /* AXMediaUploadController-Info.plist */,
+				B397AE9A171DF43700F09A3C /* DemoApp-Info.plist */,
 				B397AE9B171DF43700F09A3C /* InfoPlist.strings */,
 				B397AE9E171DF43700F09A3C /* main.m */,
-				B397AEA0171DF43700F09A3C /* AXMediaUploadController-Prefix.pch */,
+				B397AEA0171DF43700F09A3C /* DemoApp-Prefix.pch */,
 				B397AEA4171DF43700F09A3C /* Default.png */,
 				B397AEA6171DF43700F09A3C /* Default@2x.png */,
 				B397AEA8171DF43700F09A3C /* Default-568h@2x.png */,
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B397AE8E171DF43700F09A3C /* AXMediaUploadController */ = {
+		B397AE8E171DF43700F09A3C /* DemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B397AEAC171DF43700F09A3C /* Build configuration list for PBXNativeTarget "AXMediaUploadController" */;
+			buildConfigurationList = B397AEAC171DF43700F09A3C /* Build configuration list for PBXNativeTarget "DemoApp" */;
 			buildPhases = (
 				B397AE8B171DF43700F09A3C /* Sources */,
 				B397AE8C171DF43700F09A3C /* Frameworks */,
@@ -131,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = AXMediaUploadController;
-			productName = AXMediaUploadController;
-			productReference = B397AE8F171DF43700F09A3C /* AXMediaUploadController.app */;
+			name = DemoApp;
+			productName = DemoApp;
+			productReference = B397AE8F171DF43700F09A3C /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,7 +146,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "James Savage <me@axiixc.com>";
 			};
-			buildConfigurationList = B397AE8A171DF43700F09A3C /* Build configuration list for PBXProject "AXMediaUploadController" */;
+			buildConfigurationList = B397AE8A171DF43700F09A3C /* Build configuration list for PBXProject "DemoApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -158,7 +158,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B397AE8E171DF43700F09A3C /* AXMediaUploadController */,
+				B397AE8E171DF43700F09A3C /* DemoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -263,8 +263,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AXMediaUploadController/AXMediaUploadController-Prefix.pch";
-				INFOPLIST_FILE = "AXMediaUploadController/AXMediaUploadController-Info.plist";
+				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
+				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,8 +274,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AXMediaUploadController/AXMediaUploadController-Prefix.pch";
-				INFOPLIST_FILE = "AXMediaUploadController/AXMediaUploadController-Info.plist";
+				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
+				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -284,7 +284,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B397AE8A171DF43700F09A3C /* Build configuration list for PBXProject "AXMediaUploadController" */ = {
+		B397AE8A171DF43700F09A3C /* Build configuration list for PBXProject "DemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B397AEAA171DF43700F09A3C /* Debug */,
@@ -293,13 +293,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B397AEAC171DF43700F09A3C /* Build configuration list for PBXNativeTarget "AXMediaUploadController" */ = {
+		B397AEAC171DF43700F09A3C /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B397AEAD171DF43700F09A3C /* Debug */,
 				B397AEAE171DF43700F09A3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
