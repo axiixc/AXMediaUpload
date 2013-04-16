@@ -16,6 +16,8 @@
 		B397AEA5171DF43700F09A3C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B397AEA4171DF43700F09A3C /* Default.png */; };
 		B397AEA7171DF43700F09A3C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B397AEA6171DF43700F09A3C /* Default@2x.png */; };
 		B397AEA9171DF43700F09A3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B397AEA8171DF43700F09A3C /* Default-568h@2x.png */; };
+		B397AEB1171DF4A500F09A3C /* AXAppDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */; };
+		B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		B397AEA4171DF43700F09A3C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B397AEA6171DF43700F09A3C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B397AEA8171DF43700F09A3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AXAppDemoViewController.xib; sourceTree = "<group>"; };
+		B397AEB2171DF6C000F09A3C /* AXAppDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXAppDemoViewController.h; sourceTree = "<group>"; };
+		B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXAppDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +56,8 @@
 		B397AE86171DF43700F09A3C = {
 			isa = PBXGroup;
 			children = (
-				B397AE98171DF43700F09A3C /* AXMediaUploadController */,
+				B397AEAF171DF46300F09A3C /* Component */,
+				B397AE98171DF43700F09A3C /* Demo App */,
 				B397AE91171DF43700F09A3C /* Frameworks */,
 				B397AE90171DF43700F09A3C /* Products */,
 			);
@@ -75,13 +81,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B397AE98171DF43700F09A3C /* AXMediaUploadController */ = {
+		B397AE98171DF43700F09A3C /* Demo App */ = {
 			isa = PBXGroup;
 			children = (
 				B397AEA1171DF43700F09A3C /* AXAppDelegate.h */,
 				B397AEA2171DF43700F09A3C /* AXAppDelegate.m */,
+				B397AEB2171DF6C000F09A3C /* AXAppDemoViewController.h */,
+				B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */,
+				B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */,
 				B397AE99171DF43700F09A3C /* Supporting Files */,
 			);
+			name = "Demo App";
 			path = AXMediaUploadController;
 			sourceTree = "<group>";
 		};
@@ -97,6 +107,13 @@
 				B397AEA8171DF43700F09A3C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B397AEAF171DF46300F09A3C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +172,7 @@
 				B397AEA5171DF43700F09A3C /* Default.png in Resources */,
 				B397AEA7171DF43700F09A3C /* Default@2x.png in Resources */,
 				B397AEA9171DF43700F09A3C /* Default-568h@2x.png in Resources */,
+				B397AEB1171DF4A500F09A3C /* AXAppDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +185,7 @@
 			files = (
 				B397AE9F171DF43700F09A3C /* main.m in Sources */,
 				B397AEA3171DF43700F09A3C /* AXAppDelegate.m in Sources */,
+				B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
