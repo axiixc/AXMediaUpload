@@ -7,6 +7,7 @@
 //
 
 #import "AXAppDemoViewController.h"
+#import "AXMediaUpload.h"
 
 @interface AXAppDemoViewController ()
 

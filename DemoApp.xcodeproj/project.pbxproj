@@ -18,6 +18,7 @@
 		B397AEA9171DF43700F09A3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B397AEA8171DF43700F09A3C /* Default-568h@2x.png */; };
 		B397AEB1171DF4A500F09A3C /* AXAppDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */; };
 		B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */; };
+		B397AEBD171DFD2500F09A3C /* AXMediaUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,9 @@
 		B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AXAppDemoViewController.xib; sourceTree = "<group>"; };
 		B397AEB2171DF6C000F09A3C /* AXAppDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXAppDemoViewController.h; sourceTree = "<group>"; };
 		B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXAppDemoViewController.m; sourceTree = "<group>"; };
+		B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUpload.h; path = AXMediaUpload/AXMediaUpload.h; sourceTree = "<group>"; };
+		B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadController.h; path = AXMediaUpload/AXMediaUploadController.h; sourceTree = "<group>"; };
+		B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadController.m; path = AXMediaUpload/AXMediaUploadController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,9 @@
 		B397AEAF171DF46300F09A3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */,
+				B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */,
+				B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 				B397AE9F171DF43700F09A3C /* main.m in Sources */,
 				B397AEA3171DF43700F09A3C /* AXAppDelegate.m in Sources */,
 				B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */,
+				B397AEBD171DFD2500F09A3C /* AXMediaUploadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
