@@ -7,3 +7,5 @@
 //
 
 #import "AXMediaUploadController.h"
+#import "AXMediaSelectionController.h"
+#import "AXMediaSelection.h"

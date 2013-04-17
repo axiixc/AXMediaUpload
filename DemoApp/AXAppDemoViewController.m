@@ -9,7 +9,7 @@
 #import "AXAppDemoViewController.h"
 #import "AXMediaUpload.h"
 
-@interface AXAppDemoViewController ()
+@interface AXAppDemoViewController () <AXMediaSelectionControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIImageView * imageView;
 @property (nonatomic, strong) IBOutlet UIToolbar * mediaSelectBar;
@@ -17,20 +17,59 @@
 @property (nonatomic, strong) IBOutlet UILabel * mediaUploadLabel;
 @property (nonatomic, strong) IBOutlet UIProgressView * mediaUploadProgressView;
 
+@property (nonatomic, strong) AXMediaSelectionController * selectionController;
+@property (nonatomic, strong) AXMediaSelection * lastSelection;
+
 @end
 
 @implementation AXAppDemoViewController
 
 - (id)init
 {
-    return [super initWithNibName:NSStringFromClass([AXAppDemoViewController class]) bundle:nil];
+    if (!(self = [super initWithNibName:NSStringFromClass([AXAppDemoViewController class]) bundle:nil]))
+        return nil;
+    
+    return self;
 }
 
 #pragma mark - Controller Workflow
 
 - (IBAction)selectMedia:(id)sender
 {
+    [self.selectionController present:YES];
+}
+
+- (IBAction)uploadMedia:(id)sender
+{
+    if (!self.lastSelection)
+        return;
     
+    NSLog(@"TODO: AXMediaUploadController");
+}
+
+- (IBAction)cancelUpload:(id)sender
+{
+    NSLog(@"TODO: AXMediaUploadController");    
+}
+
+#pragma mark - AXMediaSelectionControllerDelegate
+
+- (AXMediaSelectionController *)selectionController
+{
+    return (_selectionController = (_selectionController) ?: [[AXMediaSelectionController alloc]
+                                                              initWithDelegate:self
+                                                              viewController:self
+                                                              barButtonItem:self.mediaSelectButtonItem
+                                                              categories:AXMediaCategoryDefault]);
+}
+
+- (void)selectionController:(AXMediaSelectionController *)controller didMakeSelection:(AXMediaSelection *)selection
+{
+    self.lastSelection = selection;
+    
+    [selection imageContents:^(UIImage *image) {
+        self.imageView.image = image;
+    }];
 }
 
 @end

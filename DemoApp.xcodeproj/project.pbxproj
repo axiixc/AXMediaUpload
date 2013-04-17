@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B7E89022171482F814ACB81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6126AB5C4D046579560468E /* libPods.a */; };
 		B397AE93171DF43700F09A3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE92171DF43700F09A3C /* UIKit.framework */; };
 		B397AE95171DF43700F09A3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE94171DF43700F09A3C /* Foundation.framework */; };
 		B397AE97171DF43700F09A3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE96171DF43700F09A3C /* CoreGraphics.framework */; };
@@ -19,13 +20,18 @@
 		B397AEB1171DF4A500F09A3C /* AXAppDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B397AEB0171DF4A500F09A3C /* AXAppDemoViewController.xib */; };
 		B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEB3171DF6C000F09A3C /* AXAppDemoViewController.m */; };
 		B397AEBD171DFD2500F09A3C /* AXMediaUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */; };
+		B397AEC0171E00AD00F09A3C /* AXMediaSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEBF171E00AD00F09A3C /* AXMediaSelectionController.m */; };
+		B397AEC2171E018D00F09A3C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AEC1171E018D00F09A3C /* AssetsLibrary.framework */; };
+		B397AEC8171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AEC7171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m */; };
+		B397AECE171E207D00F09A3C /* AXMediaSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = B397AECD171E207C00F09A3C /* AXMediaSelection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6337CDE9C0AA439BA4837C3D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B397AE8F171DF43700F09A3C /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B397AE92171DF43700F09A3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B397AE94171DF43700F09A3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B397AE96171DF43700F09A3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B397AE92171DF43700F09A3C /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B397AE94171DF43700F09A3C /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B397AE96171DF43700F09A3C /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B397AE9A171DF43700F09A3C /* DemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoApp-Info.plist"; sourceTree = "<group>"; };
 		B397AE9C171DF43700F09A3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B397AE9E171DF43700F09A3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,6 +47,14 @@
 		B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUpload.h; path = AXMediaUpload/AXMediaUpload.h; sourceTree = "<group>"; };
 		B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadController.h; path = AXMediaUpload/AXMediaUploadController.h; sourceTree = "<group>"; };
 		B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadController.m; path = AXMediaUpload/AXMediaUploadController.m; sourceTree = "<group>"; };
+		B397AEBE171E00AD00F09A3C /* AXMediaSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXMediaSelectionController.h; sourceTree = "<group>"; };
+		B397AEBF171E00AD00F09A3C /* AXMediaSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXMediaSelectionController.m; sourceTree = "<group>"; };
+		B397AEC1171E018D00F09A3C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		B397AEC6171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+AXMediaUpload.h"; path = "AXMediaUpload/ALAssetsLibrary+AXMediaUpload.h"; sourceTree = "<group>"; };
+		B397AEC7171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+AXMediaUpload.m"; path = "AXMediaUpload/ALAssetsLibrary+AXMediaUpload.m"; sourceTree = "<group>"; };
+		B397AECC171E207C00F09A3C /* AXMediaSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaSelection.h; path = AXMediaUpload/AXMediaSelection.h; sourceTree = "<group>"; };
+		B397AECD171E207C00F09A3C /* AXMediaSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaSelection.m; path = AXMediaUpload/AXMediaSelection.m; sourceTree = "<group>"; };
+		F6126AB5C4D046579560468E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,9 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B397AEC2171E018D00F09A3C /* AssetsLibrary.framework in Frameworks */,
 				B397AE93171DF43700F09A3C /* UIKit.framework in Frameworks */,
 				B397AE95171DF43700F09A3C /* Foundation.framework in Frameworks */,
 				B397AE97171DF43700F09A3C /* CoreGraphics.framework in Frameworks */,
+				4B7E89022171482F814ACB81 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +80,7 @@
 				B397AE98171DF43700F09A3C /* Demo App */,
 				B397AE91171DF43700F09A3C /* Frameworks */,
 				B397AE90171DF43700F09A3C /* Products */,
+				6337CDE9C0AA439BA4837C3D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +95,11 @@
 		B397AE91171DF43700F09A3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B397AEC1171E018D00F09A3C /* AssetsLibrary.framework */,
 				B397AE92171DF43700F09A3C /* UIKit.framework */,
 				B397AE94171DF43700F09A3C /* Foundation.framework */,
 				B397AE96171DF43700F09A3C /* CoreGraphics.framework */,
+				F6126AB5C4D046579560468E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,6 +138,12 @@
 				B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */,
 				B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */,
 				B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */,
+				B397AEBE171E00AD00F09A3C /* AXMediaSelectionController.h */,
+				B397AEBF171E00AD00F09A3C /* AXMediaSelectionController.m */,
+				B397AECC171E207C00F09A3C /* AXMediaSelection.h */,
+				B397AECD171E207C00F09A3C /* AXMediaSelection.m */,
+				B397AEC6171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.h */,
+				B397AEC7171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -133,6 +158,7 @@
 				B397AE8B171DF43700F09A3C /* Sources */,
 				B397AE8C171DF43700F09A3C /* Frameworks */,
 				B397AE8D171DF43700F09A3C /* Resources */,
+				13A1E998B33F4307AF35A0D0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,6 +211,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13A1E998B33F4307AF35A0D0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B397AE8B171DF43700F09A3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -194,6 +237,9 @@
 				B397AEA3171DF43700F09A3C /* AXAppDelegate.m in Sources */,
 				B397AEB4171DF6C000F09A3C /* AXAppDemoViewController.m in Sources */,
 				B397AEBD171DFD2500F09A3C /* AXMediaUploadController.m in Sources */,
+				B397AEC0171E00AD00F09A3C /* AXMediaSelectionController.m in Sources */,
+				B397AEC8171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m in Sources */,
+				B397AECE171E207D00F09A3C /* AXMediaSelection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +315,12 @@
 		};
 		B397AEAD171DF43700F09A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6337CDE9C0AA439BA4837C3D /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,10 +328,12 @@
 		};
 		B397AEAE171DF43700F09A3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6337CDE9C0AA439BA4837C3D /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
