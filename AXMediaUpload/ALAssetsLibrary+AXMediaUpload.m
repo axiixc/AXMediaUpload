@@ -10,7 +10,7 @@
 
 @implementation ALAssetsLibrary (AXMediaUpload)
 
-+ (void)fetchLastSavedAsset:(void (^)(ALAsset * asset))completionBlock;
+- (void)lastSavedAsset:(void (^)(ALAsset * asset))completionBlock withFilter:(ALAssetsFilter *)filter;
 {
     NSParameterAssert(completionBlock);
     
@@ -21,22 +21,20 @@
     }
     
     __block BOOL didFindMedia = NO;
-    [[self new] enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup * group, BOOL *stop) {
-        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [self enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup * group, BOOL *stop) {
+        [group setAssetsFilter:filter];
         
-        if ([group numberOfAssets] != 0)
-        {
-            NSIndexSet * indexSet = [NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1];
-            id block = ^(ALAsset * alAsset, NSUInteger index, BOOL *innerStop) {
-                if (alAsset)
-                {
-                    didFindMedia = YES;
-                    completionBlock(alAsset);
-                }
-            };
-            
-            [group enumerateAssetsAtIndexes:indexSet options:0 usingBlock:block];
-        }
+        if ([group numberOfAssets] == 0)
+            return;
+        
+        NSIndexSet * indexSet = [NSIndexSet indexSetWithIndex:[group numberOfAssets] - 1];
+        [group enumerateAssetsAtIndexes:indexSet options:0 usingBlock:^(ALAsset * alAsset, NSUInteger index, BOOL *innerStop) {
+            if (!alAsset)
+                return;
+        
+            didFindMedia = YES;
+            completionBlock(alAsset);
+        }];
         
         if (group == nil && !didFindMedia)
             completionBlock(nil);

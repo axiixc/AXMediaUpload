@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4B7E89022171482F814ACB81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6126AB5C4D046579560468E /* libPods.a */; };
+		B3100E89171E3B7600FAFEE9 /* CLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E84171E3B7600FAFEE9 /* CLEngine.m */; };
+		B3100E8A171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E86171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.m */; };
+		B3100E8B171E3B7600FAFEE9 /* CLEngineUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E88171E3B7600FAFEE9 /* CLEngineUploadOperation.m */; };
+		B3100E8E171E3C0700FAFEE9 /* AXMediaUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E8D171E3C0700FAFEE9 /* AXMediaUploadOperation.m */; };
+		B3100E90171E3D3F00FAFEE9 /* AXMediaUploadConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E8F171E3D3E00FAFEE9 /* AXMediaUploadConstants.m */; };
+		B3100E95171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */; };
+		B3100EC31720D00D00FAFEE9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3100EC21720D00C00FAFEE9 /* AVFoundation.framework */; };
+		B3100EC51720DAC700FAFEE9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3100EC41720DAC700FAFEE9 /* CoreMedia.framework */; };
 		B397AE93171DF43700F09A3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE92171DF43700F09A3C /* UIKit.framework */; };
 		B397AE95171DF43700F09A3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE94171DF43700F09A3C /* Foundation.framework */; };
 		B397AE97171DF43700F09A3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE96171DF43700F09A3C /* CoreGraphics.framework */; };
@@ -28,6 +36,21 @@
 
 /* Begin PBXFileReference section */
 		6337CDE9C0AA439BA4837C3D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B3100E80171E379000FAFEE9 /* AXMediaUploadConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadConstants.h; path = AXMediaUpload/AXMediaUploadConstants.h; sourceTree = "<group>"; };
+		B3100E81171E388B00FAFEE9 /* AXMediaUploadService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadService.h; path = AXMediaUpload/AXMediaUploadService.h; sourceTree = "<group>"; };
+		B3100E83171E3B7600FAFEE9 /* CLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEngine.h; sourceTree = "<group>"; };
+		B3100E84171E3B7600FAFEE9 /* CLEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEngine.m; sourceTree = "<group>"; };
+		B3100E85171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEngineAccountCreationViewController.h; sourceTree = "<group>"; };
+		B3100E86171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEngineAccountCreationViewController.m; sourceTree = "<group>"; };
+		B3100E87171E3B7600FAFEE9 /* CLEngineUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEngineUploadOperation.h; sourceTree = "<group>"; };
+		B3100E88171E3B7600FAFEE9 /* CLEngineUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEngineUploadOperation.m; sourceTree = "<group>"; };
+		B3100E8C171E3C0700FAFEE9 /* AXMediaUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadOperation.h; path = AXMediaUpload/AXMediaUploadOperation.h; sourceTree = "<group>"; };
+		B3100E8D171E3C0700FAFEE9 /* AXMediaUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadOperation.m; path = AXMediaUpload/AXMediaUploadOperation.m; sourceTree = "<group>"; };
+		B3100E8F171E3D3E00FAFEE9 /* AXMediaUploadConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadConstants.m; path = AXMediaUpload/AXMediaUploadConstants.m; sourceTree = "<group>"; };
+		B3100E93171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadServiceCreationViewController.h; path = AXMediaUpload/AXMediaUploadServiceCreationViewController.h; sourceTree = "<group>"; };
+		B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadServiceCreationViewController.m; path = AXMediaUpload/AXMediaUploadServiceCreationViewController.m; sourceTree = "<group>"; };
+		B3100EC21720D00C00FAFEE9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B3100EC41720DAC700FAFEE9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B397AE8F171DF43700F09A3C /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B397AE92171DF43700F09A3C /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B397AE94171DF43700F09A3C /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3100EC51720DAC700FAFEE9 /* CoreMedia.framework in Frameworks */,
+				B3100EC31720D00D00FAFEE9 /* AVFoundation.framework in Frameworks */,
 				B397AEC2171E018D00F09A3C /* AssetsLibrary.framework in Frameworks */,
 				B397AE93171DF43700F09A3C /* UIKit.framework in Frameworks */,
 				B397AE95171DF43700F09A3C /* Foundation.framework in Frameworks */,
@@ -73,6 +98,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3100E82171E3B7600FAFEE9 /* Cloud App */ = {
+			isa = PBXGroup;
+			children = (
+				B3100E83171E3B7600FAFEE9 /* CLEngine.h */,
+				B3100E84171E3B7600FAFEE9 /* CLEngine.m */,
+				B3100E85171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.h */,
+				B3100E86171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.m */,
+				B3100E87171E3B7600FAFEE9 /* CLEngineUploadOperation.h */,
+				B3100E88171E3B7600FAFEE9 /* CLEngineUploadOperation.m */,
+			);
+			name = "Cloud App";
+			path = "AXMediaUpload/Cloud App";
+			sourceTree = "<group>";
+		};
+		B3100E91171E696900FAFEE9 /* Selection Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B397AEBE171E00AD00F09A3C /* AXMediaSelectionController.h */,
+				B397AEBF171E00AD00F09A3C /* AXMediaSelectionController.m */,
+				B397AECC171E207C00F09A3C /* AXMediaSelection.h */,
+				B397AECD171E207C00F09A3C /* AXMediaSelection.m */,
+				B397AEC6171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.h */,
+				B397AEC7171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m */,
+			);
+			name = "Selection Controller";
+			sourceTree = "<group>";
+		};
+		B3100E92171E697800FAFEE9 /* Upload Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B3100E81171E388B00FAFEE9 /* AXMediaUploadService.h */,
+				B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */,
+				B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */,
+				B3100E8C171E3C0700FAFEE9 /* AXMediaUploadOperation.h */,
+				B3100E8D171E3C0700FAFEE9 /* AXMediaUploadOperation.m */,
+				B3100E93171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.h */,
+				B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */,
+			);
+			name = "Upload Controller";
+			sourceTree = "<group>";
+		};
 		B397AE86171DF43700F09A3C = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +161,8 @@
 		B397AE91171DF43700F09A3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3100EC41720DAC700FAFEE9 /* CoreMedia.framework */,
+				B3100EC21720D00C00FAFEE9 /* AVFoundation.framework */,
 				B397AEC1171E018D00F09A3C /* AssetsLibrary.framework */,
 				B397AE92171DF43700F09A3C /* UIKit.framework */,
 				B397AE94171DF43700F09A3C /* Foundation.framework */,
@@ -135,15 +203,12 @@
 		B397AEAF171DF46300F09A3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B3100E82171E3B7600FAFEE9 /* Cloud App */,
 				B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */,
-				B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */,
-				B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */,
-				B397AEBE171E00AD00F09A3C /* AXMediaSelectionController.h */,
-				B397AEBF171E00AD00F09A3C /* AXMediaSelectionController.m */,
-				B397AECC171E207C00F09A3C /* AXMediaSelection.h */,
-				B397AECD171E207C00F09A3C /* AXMediaSelection.m */,
-				B397AEC6171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.h */,
-				B397AEC7171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m */,
+				B3100E80171E379000FAFEE9 /* AXMediaUploadConstants.h */,
+				B3100E8F171E3D3E00FAFEE9 /* AXMediaUploadConstants.m */,
+				B3100E92171E697800FAFEE9 /* Upload Controller */,
+				B3100E91171E696900FAFEE9 /* Selection Controller */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -240,6 +305,12 @@
 				B397AEC0171E00AD00F09A3C /* AXMediaSelectionController.m in Sources */,
 				B397AEC8171E1E9600F09A3C /* ALAssetsLibrary+AXMediaUpload.m in Sources */,
 				B397AECE171E207D00F09A3C /* AXMediaSelection.m in Sources */,
+				B3100E89171E3B7600FAFEE9 /* CLEngine.m in Sources */,
+				B3100E8A171E3B7600FAFEE9 /* CLEngineAccountCreationViewController.m in Sources */,
+				B3100E8B171E3B7600FAFEE9 /* CLEngineUploadOperation.m in Sources */,
+				B3100E8E171E3C0700FAFEE9 /* AXMediaUploadOperation.m in Sources */,
+				B3100E90171E3D3F00FAFEE9 /* AXMediaUploadConstants.m in Sources */,
+				B3100E95171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

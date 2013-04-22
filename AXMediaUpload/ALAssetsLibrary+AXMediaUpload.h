@@ -11,6 +11,6 @@
 
 @interface ALAssetsLibrary (AXMediaUpload)
 
-+ (void)fetchLastSavedAsset:(void (^)(ALAsset * asset))completionBlock;
+- (void)lastSavedAsset:(void (^)(ALAsset * asset))completionBlock withFilter:(ALAssetsFilter *)filter;
 
 @end

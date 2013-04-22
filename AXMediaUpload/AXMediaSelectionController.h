@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
-typedef NS_OPTIONS(NSInteger, AXMediaCategory) {
-    AXMediaCategoryImage,
-    AXMediaCategoryVideo,
-    AXMediaCategoryDefault = AXMediaCategoryImage | AXMediaCategoryVideo
-};
+#import "AXMediaUploadConstants.h"
 
 @protocol AXMediaSelectionControllerDelegate;
 @class AXMediaSelection;
@@ -45,5 +40,6 @@ typedef NS_OPTIONS(NSInteger, AXMediaCategory) {
 @protocol AXMediaSelectionControllerDelegate <NSObject>
 
 - (void)selectionController:(AXMediaSelectionController *)controller didMakeSelection:(AXMediaSelection *)selection;
+- (void)selectionController:(AXMediaSelectionController *)controller encounteredError:(NSError *)error;
 
 @end

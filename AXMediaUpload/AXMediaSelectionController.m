@@ -29,6 +29,7 @@
 @property (nonatomic, strong, readwrite) NSArray * actionTitles;
 @property (nonatomic, strong) UIActionSheet * actionSheet;
 @property (nonatomic, strong) UIImagePickerController * imagePickerController;
+@property (nonatomic, strong) ALAssetsLibrary * assetsLibrary;
 
 @end
 
@@ -50,6 +51,11 @@
     return self;
 }
 
+LAZY_GETTER(ALAssetsLibrary *, assetsLibrary)
+{
+    return [[ALAssetsLibrary alloc] init];
+}
+
 #pragma mark - Selection Presentation
 
 - (void)present:(BOOL)animated
@@ -61,22 +67,6 @@
 - (void)cancel:(BOOL)animated
 {    
     [_actionSheet dismissWithClickedButtonIndex:_actionSheet.cancelButtonIndex animated:animated];
-}
-
-LAZY_GETTER(UIImagePickerController *, imagePickerController);
-{
-    UIImagePickerController * controller = [[UIImagePickerController alloc] init];
-    controller.delegate = self;
-    controller.view.backgroundColor = [UIColor blackColor];
-    
-    NSMutableArray * mediaTypes = [NSMutableArray arrayWithCapacity:2];
-    if (AXMediaCategoryImage & self.categories)
-        [mediaTypes addObject:(NSString *)kUTTypeImage];
-    if (AXMediaCategoryVideo & self.categories)
-        [mediaTypes addObject:(NSString *)kUTTypeMovie];
-    _imagePickerController.mediaTypes = mediaTypes;
-    
-    return controller;
 }
 
 LAZY_GETTER(UIActionSheet *, actionSheet);
@@ -106,7 +96,8 @@ LAZY_GETTER(NSArray *, actionCallbacks);
 
 LAZY_GETTER(NSArray *, actionTitles);
 {
-    if (self.categories & AXMediaCategoryDefault)
+    if ((self.categories & AXMediaCategoryImage)
+        && (self.categories & AXMediaCategoryVideo))
         return @[NSLocalizedString(@"Last Saved Media", nil),
                  NSLocalizedString(@"Take Photo or Video", nil),
                  NSLocalizedString(@"Choose Existing", nil)];
@@ -124,15 +115,35 @@ LAZY_GETTER(NSArray *, actionTitles);
     return nil;
 }
 
+- (ALAssetsFilter *)_assetsFilter
+{
+    if ((self.categories & AXMediaCategoryImage)
+        && (self.categories & AXMediaCategoryVideo))
+        return [ALAssetsFilter allAssets];
+    
+    if (self.categories & AXMediaCategoryImage)
+        return [ALAssetsFilter allPhotos];
+    
+    if (self.categories & AXMediaCategoryVideo)
+        return [ALAssetsFilter allVideos];
+    
+    return nil;
+}
+
 - (void)_selectLastSavedCallback;
 {
-    [ALAssetsLibrary fetchLastSavedAsset:^(ALAsset * asset) {
-        if (asset)
+    [self.assetsLibrary lastSavedAsset:^(ALAsset *asset) {
+        if (!asset)
         {
-            [self.delegate selectionController:self didMakeSelection:
-             [AXMediaSelection selectionWithAsset:asset]];
+            // TODO: Actually post an error here
+            [self.delegate selectionController:self encounteredError:nil];
+            return;
         }
-    }];
+        
+        [AXMediaSelection selectionWithAsset:asset result:^(AXMediaSelection * selection) {
+            [self.delegate selectionController:self didMakeSelection:selection];
+        }];
+    } withFilter:[self _assetsFilter]];
 }
 
 - (void)_selectNewCallback;
@@ -159,26 +170,53 @@ LAZY_GETTER(NSArray *, actionTitles);
 
 #pragma mark - UIImagePickerControllerDelegate
 
+LAZY_GETTER(UIImagePickerController *, imagePickerController);
+{
+    UIImagePickerController * controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.view.backgroundColor = [UIColor blackColor];
+    
+    NSMutableArray * mediaTypes = [NSMutableArray arrayWithCapacity:2];
+    if (AXMediaCategoryImage & self.categories)
+        [mediaTypes addObject:(NSString *)kUTTypeImage];
+    if (AXMediaCategoryVideo & self.categories)
+        [mediaTypes addObject:(NSString *)kUTTypeMovie];
+    
+    controller.mediaTypes = mediaTypes;
+    
+    return controller;
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 {
-    if (info[UIImagePickerControllerReferenceURL])
+    if (info[UIImagePickerControllerMediaURL])
     {
         [self.delegate selectionController:self didMakeSelection:
-         [AXMediaSelection selectionWithURL:info[UIImagePickerControllerReferenceURL]]];
+         [AXMediaSelection selectionWithFileURL:info[UIImagePickerControllerMediaURL] makeTemporaryCopy:NO]];
+    }
+    else if (info[UIImagePickerControllerReferenceURL])
+    {
+        [AXMediaSelection selectionWithAssetURL:info[UIImagePickerControllerReferenceURL] result:^(AXMediaSelection * selection) {
+            [self.delegate selectionController:self didMakeSelection:selection];
+        }];
     }
     else if (self.automaticallyWritesNewMediaToCameraRoll)
     {
         CGImageRef image = ((UIImage *)info[UIImagePickerControllerOriginalImage]).CGImage;
         NSDictionary * metadata = info[UIImagePickerControllerMediaMetadata];
         id completionBlock = ^(NSURL * assetURL, NSError * error) {
-            if (assetURL)
+            if (!assetURL)
             {
-                [self.delegate selectionController:self didMakeSelection:
-                 [AXMediaSelection selectionWithURL:assetURL]];
+                [self.delegate selectionController:self encounteredError:error];
+                return;
             }
+            
+            [AXMediaSelection selectionWithAssetURL:assetURL result:^(AXMediaSelection * selection) {
+                [self.delegate selectionController:self didMakeSelection:selection];
+            }];
         };
         
-        [[ALAssetsLibrary new] writeImageToSavedPhotosAlbum:image metadata:metadata completionBlock:completionBlock];
+        [self.assetsLibrary writeImageToSavedPhotosAlbum:image metadata:metadata completionBlock:completionBlock];
     }
     else
     {

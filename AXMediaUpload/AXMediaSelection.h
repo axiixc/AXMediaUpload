@@ -8,13 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "AXMediaUploadConstants.h"
 
 @interface AXMediaSelection : NSObject
 
-+ (instancetype)selectionWithURL:(NSURL *)url;
-+ (instancetype)selectionWithAsset:(ALAsset *)asset;
++ (instancetype)selectionWithFileURL:(NSURL *)fileURL makeTemporaryCopy:(BOOL)makeTemp;
 + (instancetype)selectionWithImage:(UIImage *)image;
 
-- (void)imageContents:(void (^)(UIImage * image))resultBlock;
++ (void)selectionWithAssetURL:(NSURL *)assetURL result:(void (^)(AXMediaSelection * selection))resultBlock;
++ (void)selectionWithAsset:(ALAsset *)asset result:(void (^)(AXMediaSelection * selection))resultBlock;
+
+@property (nonatomic, readonly) AXMediaType mediaType;
+
+@property (nonatomic, strong, readonly) NSString * filenameSuggestion;
+
+- (NSString *)genericFilenameSuggestion;
+
+- (void)fullScreenImage:(void (^)(UIImage * image))resultBlock;
+- (void)fullResolutionImage:(void (^)(UIImage * image))resultBlock;
+
+- (void)getDataURL:(void (^)(NSURL * dataURL, NSString * mimeType))resultBlock;
 
 @end
