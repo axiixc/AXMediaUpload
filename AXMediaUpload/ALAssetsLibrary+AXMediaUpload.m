@@ -10,15 +10,9 @@
 
 @implementation ALAssetsLibrary (AXMediaUpload)
 
-- (void)lastSavedAsset:(void (^)(ALAsset * asset))completionBlock withFilter:(ALAssetsFilter *)filter;
+- (void)lastSavedAsset:(void (^)(ALAsset * asset, NSError * error))completionBlock withFilter:(ALAssetsFilter *)filter;
 {
     NSParameterAssert(completionBlock);
-    
-    if ([ALAssetsLibrary authorizationStatus] != ALAuthorizationStatusAuthorized)
-    {
-        completionBlock(nil);
-        return;
-    }
     
     __block BOOL didFindMedia = NO;
     [self enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup * group, BOOL *stop) {
@@ -33,13 +27,13 @@
                 return;
         
             didFindMedia = YES;
-            completionBlock(alAsset);
+            completionBlock(alAsset, nil);
         }];
         
         if (group == nil && !didFindMedia)
-            completionBlock(nil);
+            completionBlock(nil, nil);
     } failureBlock:^(NSError * error) {
-        completionBlock(nil);
+        completionBlock(nil, error);
     }];
 }
 

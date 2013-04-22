@@ -132,11 +132,10 @@ LAZY_GETTER(NSArray *, actionTitles);
 
 - (void)_selectLastSavedCallback;
 {
-    [self.assetsLibrary lastSavedAsset:^(ALAsset *asset) {
+    [self.assetsLibrary lastSavedAsset:^(ALAsset *asset, NSError * error) {
         if (!asset)
         {
-            // TODO: Actually post an error here
-            [self.delegate selectionController:self encounteredError:nil];
+            [self.delegate selectionController:self encounteredError:error];
             return;
         }
         

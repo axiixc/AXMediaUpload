@@ -11,6 +11,6 @@
 
 @interface ALAssetsLibrary (AXMediaUpload)
 
-- (void)lastSavedAsset:(void (^)(ALAsset * asset))completionBlock withFilter:(ALAssetsFilter *)filter;
+- (void)lastSavedAsset:(void (^)(ALAsset * asset, NSError * error))completionBlock withFilter:(ALAssetsFilter *)filter;
 
 @end
