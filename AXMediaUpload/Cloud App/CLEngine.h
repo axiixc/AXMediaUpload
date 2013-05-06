@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "AXMediaUploadService.h"
+#import "AXMediaUpload.h"
 
 extern NSString * const CLEngineErrorDomain;
 

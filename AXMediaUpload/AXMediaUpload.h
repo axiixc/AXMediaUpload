@@ -10,5 +10,7 @@
 #import "AXMediaSelectionController.h"
 #import "AXMediaSelection.h"
 #import "AXMediaUploadService.h"
+#import "AXMediaUploadServiceDescription.h"
+#import "AXMediaUploadServiceCreationViewController.h"
 #import "AXMediaUploadConstants.h"
 #import "AXMediaUploadOperation.h"

@@ -134,28 +134,8 @@
                                                         delegate:self]);
 }
 
-- (void)uploadController:(AXMediaUploadController *)controller
-      selectServiceClass:(NSArray *)availableServiceClasses
-        withContinuation:(void (^)(__unsafe_unretained Class))continuation
-{
-    self.serviceSelectionContinuation = ^(NSInteger index) {
-        continuation(availableServiceClasses[index]);
-    };
-    
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.delegate = self;
-    
-    for (Class service in availableServiceClasses)
-        [actionSheet addButtonWithTitle:[service serviceInformation][kAXMediaUploadServiceInformationLocalizedNameKey]];
-    
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setCancelButtonIndex:(actionSheet.numberOfButtons - 1)];
-    
-    [actionSheet showInView:self.view];
-}
-
 - (NSDictionary *)uploadController:(AXMediaUploadController *)controller
-        credentialsForServiceClass:(__unsafe_unretained Class)serviceClass
+  credentialsForServiceDescription:(AXMediaUploadServiceDescription *)servieDescription
 {
     return @{ @"username": @"<#your username here#>", @"password": @"<#your password here#>" };
 }
@@ -172,13 +152,14 @@
 - (void)uploadController:(AXMediaUploadController *)controller
  requiresAccountCreation:(UIViewController *)accountCreationViewController;
 {
-    
+    [self presentViewController:accountCreationViewController animated:YES completion:nil];
 }
 
 - (void)uploadController:(AXMediaUploadController *)controller
-  prepareUploadOperation:(AXMediaUploadOperation *)operation;
+           selectService:(void (^)(AXMediaUploadServiceDescription *))serviceSelectionContinuation
+           fromAvailable:(NSArray *)availableServiceDescriptions
 {
-    
+    NSAssert(NO, @"This shouldn't be called yet");
 }
 
 @end

@@ -9,9 +9,9 @@
 #import "CLEngine.h"
 #import "CLEngineUploadOperation.h"
 #import "CLEngineAccountCreationViewController.h"
-#import "AXMediaUploadController.h"
 
 NSString * const CLEngineErrorDomain = @"com.axiixc.AXMediaUpload.cloud-app.error";
+NSString * const CLEngineServiceIdentifier = @"com.axiixc.AXMediaUpload.cloud-app";
 
 @interface CLEngine () {
     NSString * _paymentRedirectURL;
@@ -25,25 +25,25 @@ NSString * const CLEngineErrorDomain = @"com.axiixc.AXMediaUpload.cloud-app.erro
 
 #pragma mark - FFMediaUploadService
 
-+ (NSDictionary *)serviceInformation;
++ (AXMediaUploadServiceDescription *)serviceDescription
 {
-    return @{ kAXMediaUploadServiceInformationLocalizedNameKey : @"CloudApp" };
+    AXMediaUploadServiceDescription * description = [AXMediaUploadServiceDescription serviceDescriptionWithClass:self];
+    description.serviceName = @"CloudApp";
+    description.serviceIdentifier = CLEngineServiceIdentifier;
+    description.serviceCategories = AXMediaCategoryDefault;
+    
+    return description;
 }
 
-+ (AXMediaUploadServiceCreationViewController *)newServiceCreationViewController
++ (id)createServiceWithCredentials:(NSDictionary *)credentials
+{
+    return [[self alloc] initWithCredentials:credentials];
+}
+
++ (AXMediaUploadServiceCreationViewController *)createServiceCreationViewController
 {
     CLEngine * engine = [[self alloc] initWithCredentials:nil];
     return [[CLEngineAccountCreationViewController alloc] initWithEngine:engine];
-}
-
-- (Class)mediaUploadOperationClass
-{
-    return [CLEngineUploadOperation class];
-}
-
-+ (AXMediaCategory)serviceUploadCategories
-{
-    return AXMediaCategoryDefault;
 }
 
 - (id)initWithCredentials:(NSDictionary *)credentials
@@ -56,6 +56,11 @@ NSString * const CLEngineErrorDomain = @"com.axiixc.AXMediaUpload.cloud-app.erro
     self.credentials = credentials;
     
     return self;
+}
+
+- (Class)mediaUploadOperationClassForSelection:(AXMediaSelection *)selection
+{
+    return [CLEngineUploadOperation class];
 }
 
 - (void)setCredentials:(NSDictionary *)credentials
@@ -73,7 +78,7 @@ NSString * const CLEngineErrorDomain = @"com.axiixc.AXMediaUpload.cloud-app.erro
             password:(NSString *)password
 onVerificationComplete:(void (^)(BOOL success))verificationCompleteBlock;
 {
-    if (STR_EMPTY(username) || STR_EMPTY(password))
+    if (AXIsEmptyString(username) || AXIsEmptyString(password))
         return verificationCompleteBlock(NO);
     
     NSURLRequest * itemsRequest = [self requestWithMethod:@"GET" path:@"items" parameters:nil];

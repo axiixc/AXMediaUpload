@@ -11,11 +11,12 @@
 
 @class AXMediaSelection;
 @class AXMediaUploadOperation;
-@protocol AXMediaUploadService;
+@class AXMediaUploadServiceDescription;
+
 @protocol AXMediaUploadControllerDataSource;
 @protocol AXMediaUploadControllerDelegate;
 
-extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString * identifier);
+extern void AXMediaUploadControllerRegisterService(Class serviceClass);
 
 @interface AXMediaUploadController : NSObject <AXMediaSelectionControllerDelegate>
 
@@ -38,23 +39,29 @@ extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString 
 
 @protocol AXMediaUploadControllerDataSource <NSObject>
 
-- (void)uploadController:(AXMediaUploadController *)controller
-      selectServiceClass:(NSArray *)availableServiceClasses
-        withContinuation:(void (^)(Class serviceClass))continuation;
-
 - (NSDictionary *)uploadController:(AXMediaUploadController *)controller
-        credentialsForServiceClass:(Class)serviceClass;
+  credentialsForServiceDescription:(AXMediaUploadServiceDescription *)servieDescription;
 
+// TODO: Never called
 - (void)uploadController:(AXMediaUploadController *)controller
           setCredentials:(NSDictionary *)credentials
-              forService:(id <AXMediaUploadService>)service;
+   forServiceDescription:(AXMediaUploadServiceDescription *)serviceDescription;
+
+@optional
+- (NSArray *)uploadController:(AXMediaUploadController *)controller
+      filterAvailableServices:(NSArray *)availableServices;
 
 @end
 
 @protocol AXMediaUploadControllerDelegate <NSObject>
 
+// TODO: Never called
 - (void)uploadController:(AXMediaUploadController *)controller
  requiresAccountCreation:(UIViewController *)accountCreationViewController;
+
+- (void)uploadController:(AXMediaUploadController *)controller
+           selectService:(void (^)(AXMediaUploadServiceDescription *))serviceSelectionContinuation
+           fromAvailable:(NSArray *)availableServiceDescriptions;
 
 @optional
 - (void)uploadController:(AXMediaUploadController *)controller

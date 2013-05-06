@@ -17,6 +17,3 @@ extern BOOL AXMediaCategoriesContainsType(AXMediaCategory categories, AXMediaTyp
         default: return NO;
     }
 }
-
-NSString * const kAXMediaUploadServiceInformationLocalizedNameKey = @"localizedName";
-NSString * const kAXMediaUploadServiceCloudApp = @"com.axiixc.AXMediaUpload.cloud-app-service";

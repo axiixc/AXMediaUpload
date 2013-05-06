@@ -12,6 +12,8 @@
 
 @implementation CLEngineUploadOperation
 
+#pragma mark - AXMediaUploadOperation
+
 - (void)startUpload;
 {
     CLEngine * engine = (CLEngine *)self.service;
@@ -29,6 +31,21 @@
     
     [engine enqueueHTTPRequestOperation:self.s3Params];
 }
+
+- (void)finishUpload
+{
+    // TODO: This is me being too lazy to actually debug retian cycles in blocks :(
+    self.s3Params = nil;
+    self.s3Upload = nil;
+}
+
+- (void)cancelUpload;
+{
+    [self.s3Params cancel];
+    [self.s3Upload cancel];
+}
+
+#pragma mark - Internal Upload Methods
 
 - (BOOL)isValidUpload:(NSURL *)dataURL withCredentials:(NSDictionary *)uploadCredentials
 {
@@ -98,21 +115,9 @@
 
 - (void)_thirdStageUpload:(NSDictionary *)response
 {
-    NSURL * linkURL = [NSURL URLWithString:response[@"url"]];
-    NSURL * embedURL = [NSURL URLWithString:response[@"remote_url"]];
-    NSString * embedString = [NSString stringWithFormat:@"<img src='%@' />",
-                              [response[@"remote_url"] stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"]];
-    
-    [self execCompletionWithLinkURL:linkURL embedURL:embedURL embedString:embedString];
-}
-
-- (void)cancelUpload;
-{
-    if ([self.s3Params isExecuting])
-        [self.s3Params cancel];
-    
-    if ([self.s3Upload isExecuting])
-        [self.s3Upload cancel];
+    [self execCompletionWithLinkURL:[NSURL URLWithString:response[@"url"]]
+                          directURL:[NSURL URLWithString:response[@"remote_url"]]
+                          embedHTML:nil];
 }
 
 @end

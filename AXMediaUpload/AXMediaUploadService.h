@@ -10,18 +10,20 @@
 #import "AXMediaUploadConstants.h"
 
 @class AXMediaUploadServiceCreationViewController;
+@class AXMediaUploadServiceDescription;
 @class AXMediaUploadOperation;
+@class AXMediaSelection;
 
 @protocol AXMediaUploadService <NSObject>
 
-+ (NSDictionary *)serviceInformation;
-+ (AXMediaCategory)serviceUploadCategories;
-+ (AXMediaUploadServiceCreationViewController *)newServiceCreationViewController;
++ (AXMediaUploadServiceDescription *)serviceDescription;
 
-- (id)initWithCredentials:(NSDictionary *)credentials;
++ (id)createServiceWithCredentials:(NSDictionary *)credentials;
++ (AXMediaUploadServiceCreationViewController *)createServiceCreationViewController;
+
+- (Class)mediaUploadOperationClassForSelection:(AXMediaSelection *)selection;
 
 @optional
-- (Class)mediaUploadOperationClass;
 - (void)configureUploadOperation:(AXMediaUploadOperation *)uploadOperation;
 
 @end

@@ -30,7 +30,7 @@
     if ((self = [super init]))
     {
         self.engine = engine;
-        self.navigationItem.title = [CLEngine serviceInformation][kAXMediaUploadServiceInformationLocalizedNameKey];
+        self.navigationItem.title = [[CLEngine serviceDescription] serviceName];
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     
@@ -110,7 +110,7 @@
 
 - (void)_updateDoneButton:(id)sender;
 {
-    self.navigationItem.rightBarButtonItem.enabled = (!STR_EMPTY(_usernameField.text) && !STR_EMPTY(_passwordField.text));
+    self.navigationItem.rightBarButtonItem.enabled = (!AXIsEmptyString(_usernameField.text) && !AXIsEmptyString(_passwordField.text));
 }
 
 #pragma mark - UITableView Delegate/DataSource

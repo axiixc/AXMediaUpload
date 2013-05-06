@@ -18,13 +18,10 @@ typedef NS_ENUM(NSInteger, AXMediaType) {
     AXMediaTypeVideo,
 };
 
-#define STR_EMPTY(STR) ((STR) == nil || [@"" isEqualToString:(STR)])
+#define AXIsEmptyString(STR) ((STR) == nil || [@"" isEqualToString:(STR)])
 
 extern BOOL AXMediaCategoriesContainsType(AXMediaCategory categories, AXMediaType type);
 
 typedef void (^AXMediaUploadProgressBlock)(double progress);
 typedef void (^AXMediaUploadCompletionBlock)(NSURL * linkURL, NSURL * embedURL, NSString * embedString);
 typedef void (^AXMediaUploadErrorBlock)(NSError * error);
-
-extern NSString * const kAXMediaUploadServiceInformationLocalizedNameKey;
-extern NSString * const kAXMediaUploadServiceCloudApp;

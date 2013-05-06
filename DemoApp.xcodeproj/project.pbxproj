@@ -16,6 +16,8 @@
 		B3100E95171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */; };
 		B3100EC31720D00D00FAFEE9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3100EC21720D00C00FAFEE9 /* AVFoundation.framework */; };
 		B3100EC51720DAC700FAFEE9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3100EC41720DAC700FAFEE9 /* CoreMedia.framework */; };
+		B3100EF81725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100EF71725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.m */; };
+		B3100EFB1725C29200FAFEE9 /* AXMediaUploadServiceDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = B3100EFA1725C29200FAFEE9 /* AXMediaUploadServiceDescription.m */; };
 		B397AE93171DF43700F09A3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE92171DF43700F09A3C /* UIKit.framework */; };
 		B397AE95171DF43700F09A3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE94171DF43700F09A3C /* Foundation.framework */; };
 		B397AE97171DF43700F09A3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397AE96171DF43700F09A3C /* CoreGraphics.framework */; };
@@ -51,6 +53,10 @@
 		B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadServiceCreationViewController.m; path = AXMediaUpload/AXMediaUploadServiceCreationViewController.m; sourceTree = "<group>"; };
 		B3100EC21720D00C00FAFEE9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3100EC41720DAC700FAFEE9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B3100EF61725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadControllerKeychainDataSource.h; path = AXMediaUpload/AXMediaUploadControllerKeychainDataSource.h; sourceTree = "<group>"; };
+		B3100EF71725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadControllerKeychainDataSource.m; path = AXMediaUpload/AXMediaUploadControllerKeychainDataSource.m; sourceTree = "<group>"; };
+		B3100EF91725C29200FAFEE9 /* AXMediaUploadServiceDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXMediaUploadServiceDescription.h; path = AXMediaUpload/AXMediaUploadServiceDescription.h; sourceTree = "<group>"; };
+		B3100EFA1725C29200FAFEE9 /* AXMediaUploadServiceDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXMediaUploadServiceDescription.m; path = AXMediaUpload/AXMediaUploadServiceDescription.m; sourceTree = "<group>"; };
 		B397AE8F171DF43700F09A3C /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B397AE92171DF43700F09A3C /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B397AE94171DF43700F09A3C /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,15 +134,25 @@
 		B3100E92171E697800FAFEE9 /* Upload Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B3100E81171E388B00FAFEE9 /* AXMediaUploadService.h */,
 				B397AEBB171DFD2500F09A3C /* AXMediaUploadController.h */,
 				B397AEBC171DFD2500F09A3C /* AXMediaUploadController.m */,
 				B3100E8C171E3C0700FAFEE9 /* AXMediaUploadOperation.h */,
 				B3100E8D171E3C0700FAFEE9 /* AXMediaUploadOperation.m */,
+				B382296617298F6B00590C3B /* Upload Services */,
+			);
+			name = "Upload Controller";
+			sourceTree = "<group>";
+		};
+		B382296617298F6B00590C3B /* Upload Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3100E81171E388B00FAFEE9 /* AXMediaUploadService.h */,
+				B3100EF91725C29200FAFEE9 /* AXMediaUploadServiceDescription.h */,
+				B3100EFA1725C29200FAFEE9 /* AXMediaUploadServiceDescription.m */,
 				B3100E93171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.h */,
 				B3100E94171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m */,
 			);
-			name = "Upload Controller";
+			name = "Upload Services";
 			sourceTree = "<group>";
 		};
 		B397AE86171DF43700F09A3C = {
@@ -207,6 +223,8 @@
 				B397AEB8171DFD0A00F09A3C /* AXMediaUpload.h */,
 				B3100E80171E379000FAFEE9 /* AXMediaUploadConstants.h */,
 				B3100E8F171E3D3E00FAFEE9 /* AXMediaUploadConstants.m */,
+				B3100EF61725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.h */,
+				B3100EF71725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.m */,
 				B3100E92171E697800FAFEE9 /* Upload Controller */,
 				B3100E91171E696900FAFEE9 /* Selection Controller */,
 			);
@@ -311,6 +329,8 @@
 				B3100E8E171E3C0700FAFEE9 /* AXMediaUploadOperation.m in Sources */,
 				B3100E90171E3D3F00FAFEE9 /* AXMediaUploadConstants.m in Sources */,
 				B3100E95171E753E00FAFEE9 /* AXMediaUploadServiceCreationViewController.m in Sources */,
+				B3100EF81725BCBC00FAFEE9 /* AXMediaUploadControllerKeychainDataSource.m in Sources */,
+				B3100EFB1725C29200FAFEE9 /* AXMediaUploadServiceDescription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

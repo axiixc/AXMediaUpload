@@ -9,34 +9,49 @@
 #import "AXMediaUploadController.h"
 #import "AXMediaUpload.h"
 
-static NSMutableDictionary * __serviceRegistrations = nil;
+static NSMutableSet * __serviceRegistrations = nil;
 
-extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString * identifier)
+extern void AXMediaUploadControllerRegisterService(Class serviceClass)
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        __serviceRegistrations = [NSMutableDictionary new];
+        __serviceRegistrations = [[NSMutableSet alloc] init];
     });
     
-    if (!identifier || !identifier.length || ![serviceClass conformsToProtocol:@protocol(AXMediaUploadService)])
+    if (serviceClass && ![serviceClass conformsToProtocol:@protocol(AXMediaUploadService)])
+    {
+        NSLog(@"Warning: %@ is not a valid AXMediaUpload service", serviceClass);
         return;
+    }
     
-    [__serviceRegistrations setObject:serviceClass forKey:identifier];
+    [__serviceRegistrations addObject:[serviceClass serviceDescription]];
 }
 
 @implementation AXMediaUploadController
 
+static id <AXMediaUploadControllerDataSource> __defaultDataSource = nil;
+
++ (void)setDefaultDataSource:(id <AXMediaUploadControllerDataSource>)dataSource
+{
+    __defaultDataSource = dataSource;
+}
+
++ (id <AXMediaUploadControllerDataSource>)defaultDataSource
+{
+    return __defaultDataSource;
+}
+
 + (void)initialize
 {
-    AXMediaUploadControllerRegisterService(NSClassFromString(@"CLEngine"), kAXMediaUploadServiceCloudApp);
+    AXMediaUploadControllerRegisterService(NSClassFromString(@"CLEngine"));
 }
 
 + (NSArray *)availableServicesForMediaType:(AXMediaType)type;
 {
     NSMutableArray * services = [NSMutableArray arrayWithCapacity:__serviceRegistrations.count];
-    [__serviceRegistrations enumerateKeysAndObjectsUsingBlock:^(NSString * identifier, Class serviceClass, BOOL *stop) {
-        if (AXMediaCategoriesContainsType([serviceClass serviceUploadCategories], type))
-            [services addObject:serviceClass];
+    [__serviceRegistrations enumerateObjectsUsingBlock:^(AXMediaUploadServiceDescription * description, BOOL *stop) {
+        if ([description supportsMediaType:type])
+            [services addObject:description];
     }];
     
     return services;
@@ -61,7 +76,7 @@ extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString 
 
 - (id <AXMediaUploadControllerDataSource>)dataSource
 {
-    return (_dataSource) ? _dataSource : [[self class] defaultDataSource];
+    return (_dataSource) ?: [[self class] defaultDataSource];
 }
 
 #pragma mark - Media Selection Uploads
@@ -71,16 +86,8 @@ extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString 
     NSParameterAssert(continuation);
     
     [self _createServiceFromSelection:selection continuation:^(id <AXMediaUploadService> service) {
-        if (![service respondsToSelector:@selector(mediaUploadOperationClass)]
-            || [service mediaUploadOperationClass] == Nil)
-        {
-            continuation(nil);
-            return;
-        }
-        
-        AXMediaUploadOperation * operation = [[service mediaUploadOperationClass] new];
-        operation.mediaSelection = selection;
-        operation.service = service;
+        Class operationClass = [service mediaUploadOperationClassForSelection:selection];
+        AXMediaUploadOperation * operation = [[operationClass alloc] initWithSelection:selection service:service];
         
         if ([service respondsToSelector:@selector(configureUploadOperation:)])
             [service configureUploadOperation:operation];
@@ -94,23 +101,32 @@ extern void AXMediaUploadControllerRegisterService(Class serviceClass, NSString 
 
 - (void)_createServiceFromSelection:(AXMediaSelection *)selection continuation:(void (^)(id <AXMediaUploadService>))continuation;
 {
-    NSArray * serviceClasses = [[self class] availableServicesForMediaType:selection.mediaType];
+    NSArray * serviceDescriptions = [[self class] availableServicesForMediaType:selection.mediaType];
     
-    if (serviceClasses.count <= 1)
-        return continuation([self _instanciateServiceClass:serviceClasses.lastObject]);
+    if ([self.dataSource respondsToSelector:@selector(uploadController:filterAvailableServices:)])
+        serviceDescriptions = [self.dataSource uploadController:self filterAvailableServices:serviceDescriptions];
     
-    [self.dataSource uploadController:self selectServiceClass:serviceClasses withContinuation:^(__unsafe_unretained Class serviceClass) {
-        continuation([self _instanciateServiceClass:serviceClass]);
-    }];
+    void (^selectDescriptionBlock)(AXMediaUploadServiceDescription *) = ^(AXMediaUploadServiceDescription * description) {
+        NSDictionary * credentials = [self.dataSource uploadController:self credentialsForServiceDescription:description];
+        continuation([description createUploadServiceWithCredentials:credentials]);
+    };
+    
+    if (serviceDescriptions.count <= 1)
+        selectDescriptionBlock([serviceDescriptions lastObject]);
+    else
+        [self.delegate uploadController:self selectService:selectDescriptionBlock fromAvailable:serviceDescriptions];
 }
 
-- (id <AXMediaUploadService>)_instanciateServiceClass:(Class)serviceClass
+#pragma mark - AXMediaSelectionControllerDelegate
+
+- (void)selectionController:(AXMediaSelectionController *)controller didMakeSelection:(AXMediaSelection *)selection
 {
-    if (serviceClass == Nil)
-        return nil;
     
-    NSDictionary * credentials = [self.dataSource uploadController:self credentialsForServiceClass:serviceClass];
-    return [[serviceClass alloc] initWithCredentials:credentials];
+}
+
+- (void)selectionController:(AXMediaSelectionController *)controller encounteredError:(NSError *)error
+{
+    
 }
 
 @end
